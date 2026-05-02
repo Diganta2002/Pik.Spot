@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="PikSpot — AI-powered smart parking surveillance and security management platform. Monitor, protect, and manage your parking spaces in real-time.">
+  <title>PikSpot — Smart Parking Security Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=4">
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-logo">Pik<span>.</span>Spot</div>
+    <div class="navbar-nav" id="main-nav">
+      <a href="#" class="active" id="nav-dashboard">Dashboard</a>
+      <a href="#" id="nav-calendar">Calendar</a>
+      <a href="#" id="nav-reports">Reports</a>
+      <a href="#" id="nav-emergency">Emergency</a>
+    </div>
+    <div class="navbar-right">
+      <div class="location-bar" id="location-bar">
+        <span class="dot"></span>
+        <span>MG Road, Bengaluru, 560001</span>
+      </div>
+      <button class="icon-btn" id="btn-notifications" aria-label="Notifications">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+          <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+        </svg>
+      </button>
+      <button class="icon-btn" id="btn-theme-toggle" aria-label="Toggle Theme">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" id="theme-icon">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== DASHBOARD ===== -->
+  <main class="dashboard" id="dashboard">
+
+    <!-- LEFT PANEL -->
+    <section class="left-panel">
+      <!-- Surveillance View -->
+      <div class="surveillance-view" id="surveillance-view">
+        <!-- Slideshow Images -->
+        <div class="slideshow-container" id="slideshow-container">
+          <img src="assets/parking-india-1.png" alt="Indian multi-level parking garage with smart surveillance"
+            class="slide-img active">
+          <img src="assets/parking-india-2.png" alt="Outdoor Indian shopping mall parking lot" class="slide-img">
+          <img src="assets/parking-india-3.png" alt="Indian street-side smart parking at night" class="slide-img">
+          <img src="assets/parking-india-4.png" alt="Underground Indian parking facility with LED lighting"
+            class="slide-img">
+          <img src="assets/parking-india-5.png" alt="Rooftop parking in Indian metro city at sunset" class="slide-img">
+        </div>
+        <div class="surveillance-overlay"></div>
+        <div class="scan-line"></div>
+
+        <!-- Slide Counter Badge -->
+        <div class="slide-counter" id="slide-counter">
+          <span id="current-slide-num">1</span> / <span>5</span>
+        </div>
+
+        <!-- Alert Badge -->
+        <div class="alert-badge" id="alert-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+            <line x1="12" y1="9" x2="12" y2="13" />
+            <line x1="12" y1="17" x2="12.01" y2="17" />
+          </svg>
+        </div>
+
+        <!-- Camera Nav -->
+        <div class="surveillance-nav">
+          <button id="cam-prev">‹</button>
+          <div class="dot-nav active" data-slide="0"></div>
+          <div class="dot-nav" data-slide="1"></div>
+          <div class="dot-nav" data-slide="2"></div>
+          <div class="dot-nav" data-slide="3"></div>
+          <div class="dot-nav" data-slide="4"></div>
+          <button id="cam-next">›</button>
+        </div>
+
+        <!-- Add Camera -->
+        <button class="add-cam-btn" id="add-camera" aria-label="Add camera">+</button>
+
+        <!-- Timestamp -->
+        <div class="timestamp-badge" id="timestamp">
+          <span>Today: </span>
+          <span id="live-time"></span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Bottom Panels -->
+      <div class="bottom-panels">
+        <!-- Message Card -->
+        <div class="glass-card message-card" id="message-card">
+          <p class="message-text">Hey, Sarah! The system picked up an impact on your windshield, but don't worry—it's
+            nothing serious. I checked it myself, and there's not even a scratch. Turns out, a kid was playing around
+            and accidentally...</p>
+          <div class="voice-bar" id="voice-bar">
+            <div class="voice-avatar">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                <line x1="12" y1="19" x2="12" y2="23" />
+              </svg>
+            </div>
+            <span class="voice-label">You're saying</span>
+            <div class="waveform" id="waveform"></div>
+            <div class="voice-actions">
+              <span>Pause <em>record</em></span>
+              <button class="pause-btn" id="pause-record">❚❚</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Emergency Card -->
+        <div class="glass-card emergency-card" id="emergency-card">
+          <h3>Something wrong?</h3>
+          <p>Don't think!<br>Call for help!</p>
+          <div class="emergency-drag" id="emergency-drag">
+            <div class="emergency-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="3" />
+                <path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
+              </svg>
+            </div>
+            <span>Drag to <strong>emergency call</strong></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="right-sidebar" id="right-sidebar">
+      <!-- Tabs -->
+      <div class="sidebar-tabs" id="sidebar-tabs">
+        <button class="active" id="tab-overview">Overview</button>
+        <button id="tab-payment">Payment <span class="badge">2</span></button>
+        <button id="tab-history">History</button>
+      </div>
+
+
+
+      <!-- Vehicle Name -->
+      <div style="text-align: center; margin: 20px 0 10px 0;">
+        <h2 class="car-name" id="vehicle-name" style="margin-top: 0;">Tata Nexon EV</h2>
+      </div>
+
+      <!-- Vehicle Specs -->
+      <div class="car-specs" id="car-specs">
+        <div class="car-spec">
+          <div class="spec-value" id="spec-seat">P-108</div>
+          <div class="spec-label">Slot</div>
+        </div>
+        <div class="car-spec">
+          <div class="spec-value" id="spec-number">KA 01 AB 1234</div>
+          <div class="spec-label">Number</div>
+        </div>
+        <div class="car-spec">
+          <div class="spec-value" id="spec-body">SUV</div>
+          <div class="spec-label">Type</div>
+        </div>
+      </div>
+
+      <!-- Owner Row -->
+      <div class="owner-row" id="owner-row">
+        <div class="owner-info">
+          <img src="assets/user-avatar.png" alt="Sarah Connor profile photo" class="owner-avatar">
+          <div>
+            <div class="owner-name">Sarah Connor</div>
+            <div class="owner-role">Complete monitoring</div>
+          </div>
+        </div>
+        <div class="reservation-info">
+          <div class="reservation-label">Reserved until</div>
+          <div style="font-size:0.68rem;color:#6b6b8d;">Paid parking time</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:4px;">
+            <button class="icon-btn" style="width:32px;height:32px;" aria-label="Call">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+            </button>
+            <div class="reservation-time">14.08</div>
+            <button class="icon-btn" style="width:32px;height:32px;" aria-label="Calendar">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart Section -->
+      <div class="chart-section" id="chart-section">
+        <div class="chart-header">
+          <h4>Rental time</h4>
+          <select id="chart-period">
+            <option>This year</option>
+            <option>This month</option>
+            <option>This week</option>
+          </select>
+        </div>
+        <div class="chart-area">
+          <canvas id="rental-chart"></canvas>
+        </div>
+        <div class="chart-labels" id="chart-labels">
+          <span>Jul</span>
+          <span>Aug</span>
+          <span class="active">Sep</span>
+          <span>Oct</span>
+          <span>Nov</span>
+          <span>Dec</span>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <script src="app.js?v=4"></script>
+</body>
+
+</html>
